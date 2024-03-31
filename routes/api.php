@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\LampController;
 use App\Http\Controllers\Api\SensorLogController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\DeviceController;
+use App\Http\Controllers\Api\TemperatureController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -79,3 +80,12 @@ Route::prefix('v1/devices')->name('devices.')->group(function () {
     Route::delete('/{code}', [DeviceController::class, 'destroy'])->name('delete');
 });
 
+// Route Temperature
+// mengambil data temperature
+// Route butuh 2 parameter/argumen
+// 1. url ->
+// 2. lokasi file controller
+Route::get('v1/temperature', [TemperatureController::class, 'getData']);
+Route::post('v1/temperature', [TemperatureController::class, 'insertTemperature']);
+Route::put('v1/temperature/{id}', [TemperatureController::class, 'updateTemperature']);
+Route::delete('v1/temperature/{id}', [TemperatureController::class, 'deleteTemperature']);
